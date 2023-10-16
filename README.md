@@ -980,6 +980,78 @@ Ricorda che, poiché gli insiemi contengono solo elementi unici, se cerchi di ag
 Puoi anche utilizzare operazioni come `union`, `intersect`, `subtract`, ecc., per combinare, intersecare o sottrarre insiemi in Kotlin. Questi metodi sono disponibili sia per gli insiemi immutabili che per quelli mutabili.
 
 
+___________________________
+
+
+
+
+# kotlin data Fetcher 
+
+
+1- importare le librerie : 
+
+     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.8'
+
+
+
+2 - creazione della classe pojo :
+
+```
+data class Item(
+    val userId: Int,
+    val id: Int,
+    val title: String,
+    val body: String
+)
+```
+
+
+3- Creazione dell'interfaccia Retrofit 
+
+definiamo le chiamate di rete.
+
+```
+interface Api {
+
+   @Get("data")
+   fun getData() : Call<List<Item>>
+
+}
+```
+4 - RETROFIT 
+```
+val retrofit = Retrofit.Builder()
+    .baseUrl("https://jsonplaceholder.typicode.com/") // URL del tuo server
+    .addConverterFactory(GsonConverterFactory.create())
+    .build()
+
+val api = retrofit.create(Api::class.java) SETUP 
+```
+
+
+5- USE RETROFIT
+```
+val call = api.getData()
+call.enqueue(object : Callback<List<Item>> {
+    override fun onResponse(call: Call<List<Item>>, response: Response<List<Item>>) {
+        if (response.isSuccessful) {
+            val posts: List<Post>? = response.body()
+            // Fai qualcosa con i dati (es. aggiorna l'UI con i dati ricevuti)
+        } else {
+            // Gestisci errori
+        }
+    }
+
+    override fun onFailure(call: Call<List<Item>>, t: Throwable) {
+        // Gestisci errori di rete
+    }
+})
+```
+
+
+
 
 
 
