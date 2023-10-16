@@ -988,6 +988,12 @@ ___________________________
 # kotlin data Fetcher 
 
 
+Use this to convert json to kotlin
+
+
+https://json2kt.com/
+
+
 1- importare le librerie : 
 
      implementation 'com.squareup.retrofit2:retrofit:2.9.0'
