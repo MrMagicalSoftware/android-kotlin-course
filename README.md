@@ -1021,7 +1021,7 @@ definiamo le chiamate di rete.
 ```
 interface Api {
 
-   @Get("data")
+   @GET("data")
    fun getData() : Call<List<Item>>
 
 }
