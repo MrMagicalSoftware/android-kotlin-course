@@ -1043,8 +1043,15 @@ val call = api.getData()
 call.enqueue(object : Callback<List<Item>> {
     override fun onResponse(call: Call<List<Item>>, response: Response<List<Item>>) {
         if (response.isSuccessful) {
-            val posts: List<Post>? = response.body()
-            // Fai qualcosa con i dati (es. aggiorna l'UI con i dati ricevuti)
+            val items: List<Item>? = response.body()
+           
+
+             //Per aggiornare l'interfaccia utente (UI) in un'app Android Kotlin dopo aver ricevuto i dati dalla chiamata di rete, puoi utilizzare runOnUiThread (per le attività) o post (per le viste) per assicurarti che le operazioni di                      //  aggiornamento dell'UI vengano eseguite nel thread principale. Ecco come farlo:
+
+
+             runOnUiThread {
+            }
+
         } else {
             // Gestisci errori
         }
