@@ -1,6 +1,8 @@
 # android-kotlin-course
 
-
+https://respresso.io/image-converter/
+https://www.img-bak.in/
+https://codeandroid.in/Pages/IconGenerator.php
 
 In Kotlin, le variabili sono dichiarate utilizzando le parole chiave `val` e `var`. 
 
