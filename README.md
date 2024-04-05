@@ -667,8 +667,66 @@ ClasseConInterfaccia.metodoInterfaccia() // Stampa "Metodo dell'interfaccia impl
 In questo esempio, il `companion object` implementa l'interfaccia `MioInterfaccia` e può quindi essere chiamato per implementare il metodo dell'interfaccia.
 
 
+____________________
 
 
+# Modificatori di accesso
+
+In Kotlin, i modificatori di accesso sono utilizzati per controllare l'accesso alle classi, ai membri delle classi e ai package. I modificatori di accesso principali sono:
+
+1. `public`: È il modificatore di accesso predefinito. I membri contrassegnati come `public` sono accessibili ovunque nel codice che può accedere al modulo contenente la dichiarazione.
+
+2. `private`: I membri contrassegnati come `private` sono visibili solo all'interno della classe in cui sono definiti. Non sono accessibili da altre classi all'interno dello stesso modulo.
+
+3. `protected`: I membri contrassegnati come `protected` sono accessibili dalla classe stessa e dalle sue sottoclassi (classi figlie). Tuttavia, non sono accessibili da altre classi all'interno dello stesso modulo.
+
+4. `internal`: I membri contrassegnati come `internal` sono visibili all'interno dello stesso modulo. Questo significa che sono accessibili da qualsiasi classe nel modulo, indipendentemente dal package in cui si trovano.
+
+Ecco un esempio che illustra l'utilizzo di questi modificatori di accesso:
+
+```kotlin
+package mypackage
+
+class MyClass {
+    val publicVariable = 10
+    private val privateVariable = 20
+    protected val protectedVariable = 30
+    internal val internalVariable = 40
+}
+
+class AnotherClass : MyClass() {
+    fun printVariables() {
+        // Puoi accedere a publicVariable ovunque
+        println("publicVariable: ${publicVariable}")
+
+        // privateVariable non è accessibile qui
+        // protectedVariable è accessibile perché questa classe estende MyClass
+        println("protectedVariable: ${protectedVariable}")
+
+        // internalVariable è accessibile poiché è nello stesso modulo
+        println("internalVariable: ${internalVariable}")
+    }
+}
+
+fun main() {
+    val myObject = MyClass()
+
+    // Puoi accedere a publicVariable ovunque
+    println("publicVariable: ${myObject.publicVariable}")
+
+    // privateVariable non è accessibile qui
+    // protectedVariable e internalVariable non sono accessibili da main() perché sono in un altro modulo
+}
+```
+
+
+
+
+
+
+
+
+________________
 
 
 # Ereditarietà tra classi 
