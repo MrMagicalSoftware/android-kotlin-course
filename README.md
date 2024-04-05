@@ -395,7 +395,7 @@ fun nomeFunzione(parametro: Tipo): TipoDiRitorno {
 }
 ```
 
-Ecco un esempio di una funzione semplice che calcola la somma di due numeri:
+Esempio
 
 ```kotlin
 fun somma(a: Int, b: Int): Int {
@@ -682,7 +682,8 @@ In Kotlin, i modificatori di accesso sono utilizzati per controllare l'accesso a
 
 4. `internal`: I membri contrassegnati come `internal` sono visibili all'interno dello stesso modulo. Questo significa che sono accessibili da qualsiasi classe nel modulo, indipendentemente dal package in cui si trovano.
 
-Ecco un esempio che illustra l'utilizzo di questi modificatori di accesso:
+
+Esempio :
 
 ```kotlin
 package mypackage
