@@ -1067,6 +1067,72 @@ call.enqueue(object : Callback<List<Item>> {
 _______________________________________________
 
 
+# GESTIONE DELLE ECCEZIONI
+
+
+In Kotlin, la gestione delle eccezioni segue un modello simile a quello di altri linguaggi di programmazione orientati agli oggetti come Java.
+
+
+```kotlin
+fun main() {
+    try {
+        // Codice che potrebbe generare un'eccezione
+        val result = divide(10, 0)
+        println("Il risultato è $result")
+    } catch (e: ArithmeticException) {
+        // Gestione specifica per l'eccezione ArithmeticException
+        println("Errore: Divisione per zero")
+    } catch (e: Exception) {
+        // Gestione generale per altre eccezioni
+        println("Si è verificato un errore: ${e.message}")
+    } finally {
+        // Blocco di codice che viene eseguito indipendentemente se viene generata un'eccezione o meno
+        println("Operazione completata")
+    }
+}
+
+fun divide(a: Int, b: Int): Int {
+    if (b == 0) {
+        throw ArithmeticException("Divisione per zero")
+    }
+    return a / b
+}
+```
+
+In questo esempio:
+
+- Il blocco `try` contiene il codice che potrebbe generare un'eccezione.
+- Se viene generata un'eccezione di tipo `ArithmeticException` (divisione per zero), viene catturata nel blocco `catch` corrispondente.
+- Se viene generata un'eccezione di un tipo diverso da `ArithmeticException`, viene catturata nel blocco `catch` generale.
+- Il blocco `finally` viene sempre eseguito, indipendentemente se viene generata un'eccezione o meno. È utile per la pulizia delle risorse o altre operazioni che devono essere eseguite indipendentemente dall'esito del blocco `try`.
+
+Kotlin offre inoltre la possibilità di utilizzare il costrutto `try` come un'espressione, permettendo di trattare il risultato dell'espressione `try` come un valore. Ad esempio:
+
+```kotlin
+fun divide(a: Int, b: Int): Int {
+    return try {
+        a / b
+    } catch (e: ArithmeticException) {
+        println("Errore: Divisione per zero")
+        -1 // Valore di default in caso di errore
+    }
+}
+
+fun main() {
+    val result = divide(10, 0)
+    println("Il risultato è $result")
+}
+```
+
+In questo caso, se viene generata un'eccezione durante l'esecuzione del blocco `try`, il valore `-1` verrà assegnato a `result`.
+
+
+
+
+
+
+
+_______________________________________________
 
 
 # SERVICE IN ANDROID
