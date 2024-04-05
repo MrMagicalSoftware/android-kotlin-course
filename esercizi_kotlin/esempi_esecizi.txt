@@ -81,7 +81,31 @@ fun hero(bullets: Int, dragons: Int) : Boolean {
 
 }
 
+5 )Da un array contenente interi e stringhe sommare gli interi 
 
+
+
+
+public class MixedSum {
+
+    /*
+    * Assume input will be only of Int or String type
+    */
+    public fun sum(mixed: List<Any>): Int {
+        var somma : Int= 0
+        for(elemento in mixed){
+            
+            // somma = somma + elemento
+            
+            somma += when (elemento) {
+                is String -> elemento.toInt()
+                is Int -> elemento
+                else -> 0
+            }
+        }
+        return somma
+    }
+}
 
 
 
